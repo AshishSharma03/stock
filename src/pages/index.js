@@ -7,8 +7,8 @@ export default function Home({products}) {
   return (
     <div className="bg-gray-100 ">
       <Head>
-        <title>Amazon 2.0</title>
-       
+        <title>Stock</title>
+        <link rel="shortcut icon" href="/favicon.ico" />
       </Head>
       
       <Header products={products}/>
