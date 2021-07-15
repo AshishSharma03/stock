@@ -101,12 +101,12 @@ function Header({products,navbarOption}){
 
 
                 {/* Right */}
-                <div  className={ navbar ? 'RightNavbar1' : 'RightNavbar2'} style={{WebkitTapHighlightColor:"#ffffff00"}}>
+                <div  className={ navbar ? 'RightNavbar1' : 'RightNavbar2'} style={{WebkitTapHighlightColor:"#ffffff00"}} >
                     <div onClick={!session ? signIn : signOut} className="link has-tooltip"> 
                     <span class='tooltip rounded shadow-lg p-2 bg-blue-500 text-white  mt-8'>{session ? `click to Sign Out` :'click to  Sign In'}</span>
                         <p className='font-bold md:text-sm'>{session ? `Hello, ${session.user.name}` :'Sign In'}</p>
                     </div>
-                    <div className="link" style={{WebkitTapHighlightColor:"#ffffff00"}}>
+                    <div className="link" onClick={()=>router.push("/orders")} style={{WebkitTapHighlightColor:"#ffffff00"}}>
                         <p className='font-bold md:text-sm '>Order</p>
                     </div>
                     <span className="absolute top-2 right-4 h-4 w-4 md:top-2 z-50 md:right-7 md:h-5 md:w-5   text-center font-bold  bg-yellow-400 rounded-full text-black">{items.length}</span>

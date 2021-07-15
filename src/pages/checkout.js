@@ -7,12 +7,41 @@ import CheckoutProduct from '../components/CheckoutProduct';
 import {  useSession } from 'next-auth/client';
 import Currency from 'react-currency-formatter'
 import {LoginIcon} from '@heroicons/react/outline'
+import { loadStripe } from '@stripe/stripe-js';
+import axios from 'axios';
+
+const stripePromise = loadStripe(process.env.stripe_public_key)
+
+
+// console.log(process.env.stripe_public_key);
+
 
 
 function Checkout() {
     const items = useSelector(selectItems);
     const total = useSelector(selectTotal);
     const [session] = useSession()
+
+    const createCheckoutSesssion = async () => {
+        const stripe = await stripePromise;
+
+        // call the backend to create a checkout session...
+     const checkoutSession = await axios.post("/api/create-checkout-session",{
+         items : items,
+         email: session.user.email,
+     });
+
+     // Redirect user/customer to stripe checkout
+     const result = await stripe.redirectToCheckout({
+         sessionId : checkoutSession.data.id,
+     });
+
+    
+         if(result.error){alert(result.error.message)};
+    }
+
+
+
     return (
         <div className='bg-gray-100 '>
            <Header CheckoutProduct={false}/>
@@ -37,7 +66,7 @@ function Checkout() {
                 objectFit="contain"
                 className="mx-auto"
                 style={{caretColor: "transparent"}}
-
+                onContextMenu="return false;"
                 />
                 <h1 className="mx-auto bottom-20 font-extrabold  relative text-3xl text-red-500 "    style={{caretColor: "transparent"}}>OOPS! </h1> 
                 <h3 className="mx-auto relative" style={{bottom:"7rem",fontFamily:"monospace",fontWeight:"bold",fontSize:"1.2rem"}}> No Items Found.</h3>
@@ -73,8 +102,13 @@ function Checkout() {
                         
                         </p>
                         </h2>
-                        <button disabled={!session} 
+                        <button 
+                        role='link'
+                        type="submit"
+                        onClick={createCheckoutSesssion}
+                        disabled={!session} 
                         className={`p-2 mt-3 ${!session ?" bg-gray-300  text-white opacity-70 font-bold rounded  cursor-not-allowed" : "button  text-gray-800 font-bold rounded " }`}>
+
                         {!session ?  "Signin to checkout"  : "Proceed to checkout"}
                         </button>
                     </div>

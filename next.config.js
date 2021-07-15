@@ -5,6 +5,9 @@ const withImages = require('next-images')
 const nextConfig={
     images:{
         domains:['onlinetestsindia.com','fakestoreapi.com']
+    },
+    env:{
+        stripe_public_key: process.env.STRIPE_PUBLIC_KEY
     }
     
 }
