@@ -10,9 +10,9 @@ import {LoginIcon} from '@heroicons/react/outline'
 import { loadStripe } from '@stripe/stripe-js';
 import axios from 'axios';
 
-const stripePromise = loadStripe(process.env.stripe_public_key)
+const stripePromise = loadStripe('pk_test_51JD9yJSF4hF8ZK5LBCMKPU82xptoXbdtIJP1Li394gkssOnb44E0B9zNDIVHbw9nWEChCodSQFDazTjbZZNHW6VZ00tjq2zlOe')
 
-
+// process.env.stripe_public_key
 // console.log(process.env.stripe_public_key);
 
 
