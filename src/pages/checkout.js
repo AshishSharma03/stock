@@ -7,9 +7,11 @@ import CheckoutProduct from '../components/CheckoutProduct';
 import {  useSession } from 'next-auth/client';
 import Currency from 'react-currency-formatter'
 // import {LoginIcon} from '@heroicons/react/outline'
-import { loadStripe } from '@stripe/stripe-js';
+import {loadStripe} from '@stripe/stripe-js/pure';
 import axios from 'axios';
 
+
+loadStripe.setLoadParameters({advancedFraudSignals: false});
 const stripePromise = loadStripe(process.env.stripe_public_key);
 
 
