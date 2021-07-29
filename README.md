@@ -22,6 +22,16 @@ Run commands
 
 3) ```yarn run dev```
 
+## for stripe CLI
+Download Stripe CLI  https://stripe.com/docs/stripe-cli
+    
+set Stripe in system environment variables.```
+
+select project : STOCK 
+run command : ```stripe login``` 
+    
+```stripe listen --forward-to to localhost:3000/api/webhook```
+
 
 
 
