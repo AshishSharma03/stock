@@ -34,8 +34,8 @@ export default async (req, res) => {
         },
         line_items: transformedItems,
         mode: "payment",
-        success_url: `https://stock-eqepkktxs-stock.vercel.app/success`,
-        cancel_url: `https://stock-eqepkktxs-stock.vercel.app/checkout`,
+        success_url: `${process.env.HOST}/success`,
+        cancel_url: `${process.env.HOST}/checkout`,
         metadata: {
             email,
             images: JSON.stringify(items.map((item) => item.image)),
