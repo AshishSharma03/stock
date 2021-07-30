@@ -1,11 +1,11 @@
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
-const HOST = "https://stock-eqepkktxs-stock.vercel.app/";
+const HOST = "https://stock-eqepkktxs-stock.vercel.app";
 
 export default async (req, res) => {
     const {
         items,
         email
-    } = req.body;
+    } = req.rawbBody;
 
     // console.log(items);
     // console.log(email);
