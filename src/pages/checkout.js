@@ -94,7 +94,10 @@ function Checkout() {
             <div className="m-5 md:ml-1 "> 
                 {items.length > 0 && (
                     <div className="flex flex-col bg-white p-3 ">
-                        <h2 className="whitespace-nowrap text-sm font-bold text-gray-500">Subtotal ( <a style={{color:"red", fontWeight:"500" , fontSize:"1.0rem"}}>{items.length} items </a>) :&#160;&#160; 
+                        <h2 className="whitespace-nowrap text-sm font-bold text-gray-500">
+                            Subtotal 
+                            ( <a style={{color:"red", fontWeight:"500" , fontSize:"1.0rem"}}>{items.length} items </a>) 
+                            :&#160;&#160; 
                          <span className="font-bold text-green-500 text-lg">
                              <Currency quantity={ total} currency="INR" />
                         </span>
