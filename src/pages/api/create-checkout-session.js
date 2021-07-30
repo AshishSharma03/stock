@@ -5,7 +5,7 @@ export default async (req, res) => {
     const {
         items,
         email
-    } = req.rawbBody;
+    } = req.rawBody; //req.body `old`
 
     // console.log(items);
     // console.log(email);
