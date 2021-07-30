@@ -1,5 +1,5 @@
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
-
+const HOST = "https://stock-eqepkktxs-stock.vercel.app/";
 
 export default async (req, res) => {
     const {
@@ -34,8 +34,8 @@ export default async (req, res) => {
         },
         line_items: transformedItems,
         mode: "payment",
-        success_url: `${process.env.Host}/success`,
-        cancel_url: `${process.env.Host}/checkout`,
+        success_url: `${HOST}/success`,
+        cancel_url: `${HOST}/checkout`,
         metadata: {
             email,
             images: JSON.stringify(items.map((item) => item.image)),
